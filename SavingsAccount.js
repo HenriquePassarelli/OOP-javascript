@@ -1,24 +1,12 @@
-import { Client } from "./Client.js";
-export class Account {
-    static accontAmount = 0; // the static refers to all accounts
-    
+import { Account } from './Accont.js';
 
-    constructor(agency,client) {
-        this._agency = agency;
-        this._client = client;
-        Account.accontAmount++
+export class Savings extends Account {   
+
+    constructor(initialBalance,name,cpf){
+        this._balance = initialBalance;
+        this.name = name;
+        this.cpf = cpf;
     }
-
-    set client(newClient) {
-        if(newClient instanceof Client){
-            this._client = newClient;
-        }
-    }
-
-    get client() {
-        return this._client;
-    }
-
 
 
     get balance() {
@@ -43,5 +31,4 @@ export class Account {
         const withdrawValue = this.withdraw(value);
         account.deposit(withdrawValue);
     }
-
 }
