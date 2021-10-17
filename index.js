@@ -1,13 +1,20 @@
 
 import { Client } from './Client.js';
-import { Account } from './Accont.js';
+import {Manager} from './Employee/Manager.js';
+import {Director} from './Employee/Director.js';
+import { AuthenticateSystem } from './AuthenticateSystem.js';
+
+const director = new Director('henrique',10000,1647164569)
+director.setpassword('123456')
+const manager = new Manager('passarelli',10000,1647164569)
+manager.setpassword('123456')
 
 const client1 = new Client("henrique", 42569875125)
-const account1 = new Account(1000, client1)
-const client2 = new Client("Passarelli", 425691455125)
-const account2 = new Account(1000, client2)
+const managerIsLogged = AuthenticateSystem.login(manager,'123456')
+const directorIsLogged = AuthenticateSystem.login(director,'123456')
 
-account1.deposit(100)
 
-console.log(account1, " ", account2)
-console.log(Account.accontAmount)
+const clientIsLogged = AuthenticateSystem.login(client1,'123456')
+
+console.log(managerIsLogged,directorIsLogged,clientIsLogged)
+console.log(client1)
